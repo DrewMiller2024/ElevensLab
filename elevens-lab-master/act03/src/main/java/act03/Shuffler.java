@@ -49,16 +49,13 @@ public class Shuffler {
 	 */
 	public static int[] selectionShuffle(int[] values) {
             int n = values.length;
+            int k = n;
             int[] shuffled = new int[n];
             for (int i = 0; i < n; i++) {
-                int randomNum = (int)(Math.random() * n) + 0;
-                boolean findRandomNum = true;
-                while (findRandomNum) {
-                    if (values[randomNum] != -1) {
-                        shuffled[i] = values[randomNum];
-                        values[randomNum] = -1;
-                    }
-                }
+                int randomNum = (int)(Math.floor(Math.random() * k) + 0);
+                shuffled[i] = values[randomNum];
+                values[randomNum] = values[k-1];
+                k -= 1;
             }
             return shuffled;
 	}
