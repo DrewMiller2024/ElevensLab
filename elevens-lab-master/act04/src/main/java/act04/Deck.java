@@ -45,6 +45,7 @@ public class Deck {
 		}
 		size = cards.size();
 		shuffle();
+            
 	}
 
 
@@ -83,7 +84,20 @@ public class Deck {
 	 * and reset the size to represent the entire deck.
 	 */
 	public void shuffle() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 04 *** */
+            int n = size;
+            int k = n;
+            List<Card> shuffled = new ArrayList<Card>();
+            for (int i = 0; i < n; i++) {
+                int randomNum = (int)(Math.floor(Math.random() * k) + 0);
+                Card c = cards.get(randomNum);
+                shuffled.add(new Card(c.getRank(), c.getSuit(), c.getPointValue()));
+                cards.remove(randomNum);
+                k -= 1;
+            } 
+            for (Card c : shuffled) {
+                cards.add(new Card(c.getRank(), c.getSuit(), c.getPointValue()));
+            }
+            size = cards.size();
 	}
 
 	/**
